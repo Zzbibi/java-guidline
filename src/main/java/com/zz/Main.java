@@ -1,5 +1,9 @@
 package com.zz;
 
+import com.zz.decorator.Beverage;
+import com.zz.decorator.Espresso;
+import com.zz.decorator.Mocha;
+import com.zz.decorator.Whip;
 import com.zz.observer.publisher.CurrentConditionDisplay;
 import com.zz.observer.subscriber.WeatherData;
 import com.zz.strategy.Duck;
@@ -23,10 +27,17 @@ public class Main {
 //        model.setFlyBehavior(new FlyRocketPowered());
 //        model.performFly();
 
-        WeatherData weatherData = new WeatherData();
+//        WeatherData weatherData = new WeatherData();
+//        CurrentConditionDisplay currentConditionDisplay = new CurrentConditionDisplay(weatherData);
+//        weatherData.setMeasurements(13f, 13f, 13f);
 
-        CurrentConditionDisplay currentConditionDisplay = new CurrentConditionDisplay(weatherData);
-        weatherData.setMeasurements(13f, 13f, 13f);
+        Beverage beverage = new Espresso();
+        beverage = new Mocha(beverage);
+        beverage = new Whip(beverage);
+        beverage = new Whip(beverage);
+        System.out.println("description:" + beverage.getDescription());
+        System.out.println("price:$" + beverage.cost());
+
     }
 
 }
