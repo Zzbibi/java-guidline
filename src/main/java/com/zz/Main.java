@@ -1,5 +1,8 @@
 package com.zz;
 
+import com.zz.command.Light;
+import com.zz.command.LightOnCommand;
+import com.zz.command.SimpleRemoteControl;
 import com.zz.decorator.Beverage;
 import com.zz.decorator.Espresso;
 import com.zz.decorator.Mocha;
@@ -41,10 +44,18 @@ public class Main {
 //        System.out.println("description:" + beverage.getDescription());
 //        System.out.println("price:$" + beverage.cost());
 
-        ChicagoPizzaStore chicagoPizzaStore = new ChicagoPizzaStore();
-        chicagoPizzaStore.orderPizza("cheese");
-        NYPizzaStore nyPizzaStore = new NYPizzaStore();
-        nyPizzaStore.orderPizza("cheese");
+//        ChicagoPizzaStore chicagoPizzaStore = new ChicagoPizzaStore();
+//        chicagoPizzaStore.orderPizza("cheese");
+//        NYPizzaStore nyPizzaStore = new NYPizzaStore();
+//        nyPizzaStore.orderPizza("cheese");
+
+        SimpleRemoteControl simpleRemoteControl = new SimpleRemoteControl();
+
+        Light light = new Light();
+        LightOnCommand lightOnCommand = new LightOnCommand(light);
+
+        simpleRemoteControl.setCommand(lightOnCommand);
+        simpleRemoteControl.buttonWasPressed();
 
     }
 
