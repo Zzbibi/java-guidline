@@ -1,5 +1,7 @@
 package com.zz;
 
+import com.zz.abstractfactory.TurkeyAdapter;
+import com.zz.adapter.WildTurkey;
 import com.zz.command.Light;
 import com.zz.command.LightOnCommand;
 import com.zz.command.SimpleRemoteControl;
@@ -49,13 +51,17 @@ public class Main {
 //        NYPizzaStore nyPizzaStore = new NYPizzaStore();
 //        nyPizzaStore.orderPizza("cheese");
 
-        SimpleRemoteControl simpleRemoteControl = new SimpleRemoteControl();
+//        SimpleRemoteControl simpleRemoteControl = new SimpleRemoteControl();
+//
+//        Light light = new Light();
+//        LightOnCommand lightOnCommand = new LightOnCommand(light);
+//
+//        simpleRemoteControl.setCommand(lightOnCommand);
+//        simpleRemoteControl.buttonWasPressed();
 
-        Light light = new Light();
-        LightOnCommand lightOnCommand = new LightOnCommand(light);
-
-        simpleRemoteControl.setCommand(lightOnCommand);
-        simpleRemoteControl.buttonWasPressed();
+        TurkeyAdapter turkeyAdapter = new TurkeyAdapter(WildTurkey::new);
+        turkeyAdapter.quack();
+        turkeyAdapter.fly();
 
     }
 
