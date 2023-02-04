@@ -12,6 +12,10 @@ import com.zz.decorator.Whip;
 import com.zz.factorymethod.factory.ChicagoPizzaStore;
 import com.zz.factorymethod.factory.NYPizzaStore;
 import com.zz.factorymethod.pizza.NYStyleCheesePizza;
+import com.zz.iterator.DinerMenu;
+import com.zz.iterator.DinerMenuIterator;
+import com.zz.iterator.PancakeHouseMenu;
+import com.zz.iterator.Waitress;
 import com.zz.observer.publisher.CurrentConditionDisplay;
 import com.zz.observer.subscriber.WeatherData;
 import com.zz.strategy.Duck;
@@ -59,9 +63,15 @@ public class Main {
 //        simpleRemoteControl.setCommand(lightOnCommand);
 //        simpleRemoteControl.buttonWasPressed();
 
-        TurkeyAdapter turkeyAdapter = new TurkeyAdapter(WildTurkey::new);
-        turkeyAdapter.quack();
-        turkeyAdapter.fly();
+//        TurkeyAdapter turkeyAdapter = new TurkeyAdapter(WildTurkey::new);
+//        turkeyAdapter.quack();
+//        turkeyAdapter.fly();
+
+        PancakeHouseMenu pancakeHouseMenu = new PancakeHouseMenu();
+        DinerMenu dinerMenu = new DinerMenu();
+
+        Waitress waitress = new Waitress(pancakeHouseMenu, dinerMenu);
+        waitress.printMenu();
 
     }
 
