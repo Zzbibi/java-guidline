@@ -1,10 +1,15 @@
 package com.zz.iterator;
 
+import com.zz.component.MenuComponent;
+import com.zz.component.NullIterator;
+
+import java.util.Iterator;
+
 /**
  * @Author zhangzhen
  * @create 2023/2/4 21:00
  */
-public class MenuItem {
+public class MenuItem extends MenuComponent {
 
     private String name;
     private String description;
@@ -18,40 +23,37 @@ public class MenuItem {
         this.price = price;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    @Override
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
+    @Override
     public boolean isVagetarian() {
         return vagetarian;
     }
 
-    public void setVagetarian(boolean vagetarian) {
-        this.vagetarian = vagetarian;
-    }
-
+    @Override
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public static MenuItem of(String name, String description, boolean vagetarian, double price) {
         return new MenuItem(name, description, vagetarian, price);
+    }
+
+    @Override
+    public Iterator<MenuComponent> createIterator() {
+        return new NullIterator<>();
+    }
+
+    public void print() {
+        System.out.println(getName() + ", " + getPrice() + " -- " + getDescription());
     }
 
 }

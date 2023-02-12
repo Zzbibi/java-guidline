@@ -5,6 +5,9 @@ import com.zz.adapter.WildTurkey;
 import com.zz.command.Light;
 import com.zz.command.LightOnCommand;
 import com.zz.command.SimpleRemoteControl;
+import com.zz.component.Menu;
+import com.zz.component.MenuComponent;
+import com.zz.component.Waitress;
 import com.zz.decorator.Beverage;
 import com.zz.decorator.Espresso;
 import com.zz.decorator.Mocha;
@@ -12,10 +15,7 @@ import com.zz.decorator.Whip;
 import com.zz.factorymethod.factory.ChicagoPizzaStore;
 import com.zz.factorymethod.factory.NYPizzaStore;
 import com.zz.factorymethod.pizza.NYStyleCheesePizza;
-import com.zz.iterator.DinerMenu;
-import com.zz.iterator.DinerMenuIterator;
-import com.zz.iterator.PancakeHouseMenu;
-import com.zz.iterator.Waitress;
+import com.zz.iterator.*;
 import com.zz.observer.publisher.CurrentConditionDisplay;
 import com.zz.observer.subscriber.WeatherData;
 import com.zz.strategy.Duck;
@@ -67,11 +67,32 @@ public class Main {
 //        turkeyAdapter.quack();
 //        turkeyAdapter.fly();
 
-        PancakeHouseMenu pancakeHouseMenu = new PancakeHouseMenu();
-        DinerMenu dinerMenu = new DinerMenu();
+//        PancakeHouseMenu pancakeHouseMenu = new PancakeHouseMenu();
+//        DinerMenu dinerMenu = new DinerMenu();
+//
+//        Waitress waitress = new Waitress(pancakeHouseMenu, dinerMenu);
+//        waitress.printMenu();
 
-        Waitress waitress = new Waitress(pancakeHouseMenu, dinerMenu);
-        waitress.printMenu();
+        MenuComponent pancakeHouseMenu = new Menu("Pancake house menu", "Breakfast");
+        MenuComponent dinerMenu = new Menu("Diner menu", "Launch");
+        MenuComponent cafeMenu = new Menu("Cafe menu", "Diner");
+        MenuComponent dessertMenu = new Menu("Dessert menu", "Desert of course");
+
+        MenuComponent allMenus = new Menu("All menus", "All menu combined");
+        allMenus.add(pancakeHouseMenu);
+        allMenus.add(dinerMenu);
+        allMenus.add(cafeMenu);
+
+        dinerMenu.add(new MenuItem("Pasta", "Spaghetti with marinara sauce",
+                true, 3.89));
+        dinerMenu.add(dessertMenu);
+
+        dessertMenu.add(new MenuItem("Apple pie", "Apple pie with a flakey crust",
+                true, 1.59));
+
+        Waitress waitress = new Waitress(allMenus);
+        //waitress.printMenu();
+        waitress.printVagetarianMenu();
 
     }
 
