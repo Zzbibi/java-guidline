@@ -71,10 +71,9 @@ public class Main {
         PancakeHouseMenu pancakeHouseMenu = new PancakeHouseMenu();
         DinerMenu dinerMenu = new DinerMenu();
 
-<<<<<<< Updated upstream
         Waitress waitress = new Waitress(pancakeHouseMenu, dinerMenu);
         waitress.printMenu();
-=======
+
 //        MenuComponent pancakeHouseMenu = new Menu("Pancake house menu", "Breakfast");
 //        MenuComponent dinerMenu = new Menu("Diner menu", "Launch");
 //        MenuComponent cafeMenu = new Menu("Cafe menu", "Diner");
@@ -99,7 +98,6 @@ public class Main {
         GumballMachine gumballMachine = new GumballMachine(5);
         gumballMachine.insertQuarter();
         gumballMachine.turnCrank();
->>>>>>> Stashed changes
 
     }
 
